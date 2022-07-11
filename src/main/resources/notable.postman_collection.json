@@ -1,0 +1,123 @@
+{
+	"info": {
+		"_postman_id": "e7e43d18-970b-46dc-8e2d-027a96e00d4c",
+		"name": "notable",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Doctors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/doctors",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Appointments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/appointments",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Appointments by doctor id and date",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "01/01/2020",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/doctors/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"doctors",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete appointments",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/appointments/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointments",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Make Appointment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"first\",\r\n    \"lastName\": \"last\",\r\n    \"date\": \"01/01/2020\",\r\n    \"time\": \"5:00\",\r\n    \"doctorId\": 1,\r\n    \"newPatient\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/appointments/create",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"appointments",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

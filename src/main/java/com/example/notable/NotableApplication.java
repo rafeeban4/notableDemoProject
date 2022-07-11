@@ -1,7 +1,9 @@
 package com.example.notable;
 
-import com.example.notable.db.CustomerRepository;
-import com.example.notable.model.Customer;
+import com.example.notable.db.AppointmentRepository;
+import com.example.notable.db.DoctorRepository;
+import com.example.notable.model.Appointment;
+import com.example.notable.model.Doctor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -17,40 +19,15 @@ public class NotableApplication {
 		SpringApplication.run(NotableApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner demo(CustomerRepository repository) {
+	public CommandLineRunner demo(DoctorRepository doctorRepository, AppointmentRepository appointmentRepository) {
 		return (args) -> {
 			// save a few customers
-			repository.save(new Customer("Jack", "Bauer"));
-			repository.save(new Customer("Chloe", "O'Brian"));
-			repository.save(new Customer("Kim", "Bauer"));
-			repository.save(new Customer("David", "Palmer"));
-			repository.save(new Customer("Michelle", "Dessler"));
+			doctorRepository.save(new Doctor("Jack", "Bauer"));
+			doctorRepository.save(new Doctor("Chloe", "O'Brian"));
 
-			// fetch all customers
-			log.info("Customers found with findAll():");
-			log.info("-------------------------------");
-			for (Customer customer : repository.findAll()) {
-				log.info(customer.toString());
-			}
-			log.info("");
+			appointmentRepository.save(new Appointment("firstName", "lastName",  "01/01/2020", "5:15",  1L,true ));
 
-			// fetch an individual customer by ID
-			Customer customer = repository.findById(1L);
-			log.info("Customer found with findById(1L):");
-			log.info("--------------------------------");
-			log.info(customer.toString());
-			log.info("");
-
-			// fetch customers by last name
-			log.info("Customer found with findByLastName('Bauer'):");
-			log.info("--------------------------------------------");
-			repository.findByLastName("Bauer").forEach(bauer -> {
-				log.info(bauer.toString());
-			});
-			// for (Customer bauer : repository.findByLastName("Bauer")) {
-			//  log.info(bauer.toString());
-			// }
-			log.info("");
 		};
 	}
+
 }
