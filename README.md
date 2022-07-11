@@ -2,11 +2,11 @@
 
 simple backend application using Spring Boot with Gradle, Spring Web, and Spring Data JPA.
 
-import project
+import project as gradle project
 
-run NotableApplication.java
+run NotableApplication.java or gradlew run from commandline
 
-CommandLineRunner is used to add entries to database on 
+CommandLineRunner is used to add entries to database on startup
 
 a postman collections is in the resources folder for testing the endpoints
 
